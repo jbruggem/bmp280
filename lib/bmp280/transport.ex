@@ -21,6 +21,7 @@ defmodule BMP280.Transport do
 
   @spec read(t(), 0..255, non_neg_integer()) :: {:ok, binary()} | {:error, any()}
   def read(transport, register, bytes_to_read) do
+    Process.sleep(25)
     I2C.write_read(transport.i2c, transport.address, <<register>>, bytes_to_read)
   end
 end
